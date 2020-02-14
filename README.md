@@ -14,3 +14,5 @@ An algorithm that generate symmetric and random 10x10 magic squares using Python
 
 ### Squares generated
 ![Square2](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/square2.jpg)
+
+![Squares](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/squares.jpg)
