@@ -8,3 +8,9 @@ An algorithm that generate symmetric and random 10x10 magic squares using Python
 
 ### Whats is a magic square?
 *A magic square is a square that is completely **symmetrical**. The sum of any column generates a **constant number**, that is simultaneously the sum of any line or diagonal of this square.*
+
+### Why?
+*Magic square* is a very old mathematical concept, and also a topic of *Number Theory*. For mathematical and computational purposes is an interesting challenge, given the complexity of a symmectrical matriz and the conditions to built an magic square.
+
+### Squares generated
+![Square2](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/square2.jpg)
