@@ -5,30 +5,29 @@ from pygame.locals import *
 
 class Magic_squares:
     def __init__(self):
-        self.string = lambda n: str(n)                                                                                                                      #1
-        self.separar = lambda n: [int(i) for i in self.string(n)]                                                                                           #2
-        self.juntar = lambda l: reduce(self.somar, [str(i) for i in l])                                                                                     #3
+        self.string = lambda n: str(n)
+        self.separar = lambda n: [int(i) for i in self.string(n)]
+        self.juntar = lambda l: reduce(self.somar, [str(i) for i in l])
         self.somar = lambda x, y: x + y
-        self.somarDigitos = lambda n: reduce(self.somar, self.separar(n))                                                                                   #4
+        self.somarDigitos = lambda n: reduce(self.somar, self.separar(n))
 
-        self.complemento = lambda k, v: [i if self.somarDigitos(int(self.juntar([k, i]))) == v else -1 for i in range(0, 16)]                               #5
-        self.encontrar_complemento = lambda v, k: list(filter(lambda i: i != -1, self.complemento(k, v)))                                                   #6
+        self.complemento = lambda k, v: [i if self.somarDigitos(int(self.juntar([k, i]))) == v else -1 for i in range(0, 16)]
+        self.encontrar_complemento = lambda v, k: list(filter(lambda i: i != -1, self.complemento(k, v)))
 
-        self.index_central = lambda m: int((len(m) - 1)/2 + 1 - 1)                                                                                          #7
-        self.cruz_matriz = lambda m: [[m[self.index_central(m)][i] for i in range(len(m))], [m[i][self.index_central(m)] for i in range(len(m))]]           #8
-        self.x_matriz = lambda m: [[m[i][i] for i in range(len(m))], [m[i][self.encontrar_complemento(8, i)[0]] for i in range(len(m))]]                    #9
+        self.index_central = lambda m: int((len(m) - 1)/2 + 1 - 1)
+        self.cruz_matriz = lambda m: [[m[self.index_central(m)][i] for i in range(len(m))], [m[i][self.index_central(m)] for i in range(len(m))]]
+        self.x_matriz = lambda m: [[m[i][i] for i in range(len(m))], [m[i][self.encontrar_complemento(8, i)[0]] for i in range(len(m))]]
 
-        self.showSquare = lambda m: [print(i) for i in m]                                                                                                   #10
-        self.somaLinhas = lambda m: [sum(i) for i in m]                                                                                                     #11
-        self.somaX = lambda m: [sum(self.x_matriz(m)[0]), sum(self.x_matriz(m)[1])]                                                                         #12
-        self.somaColunas = lambda m: [sum([m[i][0] for i in range(len(m))]) for k in range(len(m))]                                                         #13
-        self.comparador = lambda m: [self.somaX(m), self.somaLinhas(m), self.somaColunas(self.magic)]                                                       #14
-        self.validar = lambda m: [True if sum(i) == len(i) * i[0] else False for i in m]                                                                    #15
-        self.criar_magic = lambda len: [[0,0,0,0,0,0,0,0,0] for i in range(int(len**(1/2)))]                                                                #16
-        self.magic = self.criar_magic(81)                                                                                                                   #17
-        self.padrao = [0, 0, 0, 0, 0, 0, 0, 0, 0]                                                                                                           #18
+        self.showSquare = lambda m: [print(i) for i in m]
+        self.somaLinhas = lambda m: [sum(i) for i in m]
+        self.somaX = lambda m: [sum(self.x_matriz(m)[0]), sum(self.x_matriz(m)[1])]
+        self.somaColunas = lambda m: [sum([m[i][0] for i in range(len(m))]) for k in range(len(m))]
+        self.comparador = lambda m: [self.somaX(m), self.somaLinhas(m), self.somaColunas(self.magic)]
+        self.validar = lambda m: [True if sum(i) == len(i) * i[0] else False for i in m]
+        self.criar_magic = lambda len: [[0,0,0,0,0,0,0,0,0] for i in range(int(len**(1/2)))]
+        self.magic = self.criar_magic(81)
+        self.padrao = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    #19
     def buildPattern(self, pattern):
         self.padrao = pattern
         self.magic[self.index_central(self.magic)] = self.padrao
@@ -52,7 +51,7 @@ class Magic_squares:
         for i in range(0, self.index_central(self.magic)):
             self.magic[-1][i] = self.padrao[i - self.index_central(self.magic) - 1]
 
-        #------------------------------------------------------------------------------------------------------------ Diagonal direita-esquerda
+        #--------------------------------------------------------------------------------------- Diagonal direita-esquerda
 
         for i in range(1, len(self.magic)):
             self.magic[i][self.encontrar_complemento(8, i)[0]] = self.magic[0][8]
@@ -85,7 +84,7 @@ class Magic_squares:
         for i in range(1, len(self.magic) -7):
             self.magic[i][self.encontrar_complemento(1, i)[0]] = self.magic[0][1]
 
-        #------------------------------------------------------------------------------------------------------------ Diagonal esquerda direita
+        #--------------------------------------------------------------------------------------- Diagonal esquerda direita
 
         for i in range(1, len(self.magic)):
             self.magic[self.encontrar_complemento(9, i)[0]][i] = self.magic[8][1]
@@ -114,7 +113,6 @@ class Magic_squares:
         for i in range(7, len(self.magic)):
             self.magic[self.encontrar_complemento(15, i)[0]][i] = self.magic[8][7]
 
-    #20
     def Random_square(self, nums):
         square = []
         initial_pattern = nums
@@ -160,7 +158,6 @@ class Magic_squares:
 
         return [square, initial_pattern]
 
-    #21
     def generateNums(self):
         pattern = [1,6,2,7,3,8,4,9,5]
         new_pattern = [0,0,0,0,0,0,0,0,0]
@@ -172,10 +169,8 @@ class Magic_squares:
             for i in range(len(pattern)):
                 if self.somarDigitos(self.somarDigitos(self.somarDigitos((nums[i])))) == pattern[k]:
                     new_pattern[k] = nums[i]
-
         return new_pattern
 
-    #22
     def render(self, magic):
         screen = pygame.display.set_mode((595, 595))
         font = pygame.font.Font('freesansbold.ttf', 18)
@@ -207,8 +202,3 @@ class Magic_squares:
                 pos += passo
                 num_rect.topleft = (pos, n[k] * 26)
                 screen.blit(nums_font, num_rect)
-
-
-
-
-
