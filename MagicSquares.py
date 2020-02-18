@@ -28,6 +28,7 @@ class Magic_squares:
         self.magic = self.criar_magic(81)
         self.padrao = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+    #19
     def buildPattern(self, pattern):
         self.padrao = pattern
         self.magic[self.index_central(self.magic)] = self.padrao
@@ -48,71 +49,22 @@ class Magic_squares:
         for i in range(self.index_central(self.magic) + 1, len(self.magic)):
             self.magic[-1][i] = self.padrao[i - self.index_central(self.magic) - 1]
 
-        for i in range(0, self.index_central(self.magic)):
+        for i in range(self.index_central(self.magic)):
             self.magic[-1][i] = self.padrao[i - self.index_central(self.magic) - 1]
 
-        #--------------------------------------------------------------------------------------- Diagonal direita-esquerda
+        #------------------------------------------------------------------------------------------------------------ Diagonal direita-esquerda
 
-        for i in range(1, len(self.magic)):
-            self.magic[i][self.encontrar_complemento(8, i)[0]] = self.magic[0][8]
+        for k in range(8, 0, -1):
+            for i in range(1, len(self.magic) - (self.encontrar_complemento(8, k)[0])):
+                self.magic[i][self.encontrar_complemento(k, i)[0]] = self.magic[0][k]
 
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -1):
-            self.magic[i][self.encontrar_complemento(7, i)[0]] = self.magic[0][7]
+        #------------------------------------------------------------------------------------------------------------ Diagonal esquerda direita
 
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -2):
-            self.magic[i][self.encontrar_complemento(6, i)[0]] = self.magic[0][6]
+        for k in range(1, 8):
+            for i in range(k, len(self.magic)):
+                self.magic[self.encontrar_complemento(k + 8, i)[0]][i] = self.magic[8][k]
 
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -3):
-            self.magic[i][self.encontrar_complemento(5, i)[0]] =self.magic[0][5]
-
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -4):
-            self.magic[i][self.encontrar_complemento(4, i)[0]] = self.magic[0][4]
-
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -5):
-            self.magic[i][self.encontrar_complemento(3, i)[0]] = self.magic[0][3]
-
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -6):
-            self.magic[i][self.encontrar_complemento(2, i)[0]] = self.magic[0][2]
-
-        #----------------------------------------------------------------------------
-        for i in range(1, len(self.magic) -7):
-            self.magic[i][self.encontrar_complemento(1, i)[0]] = self.magic[0][1]
-
-        #--------------------------------------------------------------------------------------- Diagonal esquerda direita
-
-        for i in range(1, len(self.magic)):
-            self.magic[self.encontrar_complemento(9, i)[0]][i] = self.magic[8][1]
-
-        #----------------------------------------------------------------------------
-        for i in range(2, len(self.magic)):
-            self.magic[self.encontrar_complemento(10, i)[0]][i] = self.magic[8][2]
-
-        #----------------------------------------------------------------------------
-        for i in range(3, len(self.magic)):
-            self.magic[self.encontrar_complemento(11, i)[0]][i] = self.magic[8][3]
-
-        #----------------------------------------------------------------------------
-        for i in range(4, len(self.magic)):
-            self.magic[self.encontrar_complemento(12, i)[0]][i] = self.magic[8][4]
-
-        #----------------------------------------------------------------------------
-        for i in range(5, len(self.magic)):
-            self.magic[self.encontrar_complemento(13, i)[0]][i] = self.magic[8][5]
-
-        #----------------------------------------------------------------------------
-        for i in range(6, len(self.magic)):
-            self.magic[self.encontrar_complemento(14, i)[0]][i] = self.magic[8][6]
-
-        #----------------------------------------------------------------------------
-        for i in range(7, len(self.magic)):
-            self.magic[self.encontrar_complemento(15, i)[0]][i] = self.magic[8][7]
-
+    #20
     def Random_square(self, nums):
         square = []
         initial_pattern = nums
@@ -128,36 +80,14 @@ class Magic_squares:
 
         for i in range(0, len(self.magic)):
             for k in range(0, len(self.magic)):
-                if self.magic[i][k] == 1:
-                    square[i][k] = int(nums[0])
-                    continue
-                if self.magic[i][k] == 2:
-                    square[i][k] = int(nums[1])
-                    continue
-                if self.magic[i][k] == 3:
-                    square[i][k] = int(nums[2])
-                    continue
-                if self.magic[i][k] == 4:
-                    square[i][k] = int(nums[3])
-                    continue
-                if self.magic[i][k] == 5:
-                    square[i][k] = int(nums[4])
-                    continue
-                if self.magic[i][k] == 6:
-                    square[i][k] = int(nums[5])
-                    continue
-                if self.magic[i][k] == 7:
-                    square[i][k] = int(nums[6])
-                    continue
-                if self.magic[i][k] == 8:
-                    square[i][k] = int(nums[7])
-                    continue
-                if self.magic[i][k] == 9:
-                    square[i][k] = int(nums[8])
-                    continue
+                for n in range(1, 10):
+                    if self.magic[i][k] == n:
+                        square[i][k] = int(nums[n - 1])
+                        continue
 
         return [square, initial_pattern]
 
+    #21
     def generateNums(self):
         pattern = [1,6,2,7,3,8,4,9,5]
         new_pattern = [0,0,0,0,0,0,0,0,0]
@@ -169,8 +99,10 @@ class Magic_squares:
             for i in range(len(pattern)):
                 if self.somarDigitos(self.somarDigitos(self.somarDigitos((nums[i])))) == pattern[k]:
                     new_pattern[k] = nums[i]
+
         return new_pattern
 
+    #22
     def render(self, magic):
         screen = pygame.display.set_mode((595, 595))
         font = pygame.font.Font('freesansbold.ttf', 18)
