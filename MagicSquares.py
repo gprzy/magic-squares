@@ -3,6 +3,9 @@ import random
 import pygame, random
 from pygame.locals import *
 
+
+# Author: Gabriel Przytocki
+
 class Magic_squares:
     def __init__(self):
         self.string = lambda n: str(n)
@@ -28,7 +31,6 @@ class Magic_squares:
         self.magic = self.criar_magic(81)
         self.padrao = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    #19
     def buildPattern(self, pattern):
         self.padrao = pattern
         self.magic[self.index_central(self.magic)] = self.padrao
@@ -64,7 +66,6 @@ class Magic_squares:
             for i in range(k, len(self.magic)):
                 self.magic[self.encontrar_complemento(k + 8, i)[0]][i] = self.magic[8][k]
 
-    #20
     def Random_square(self, nums):
         square = []
         initial_pattern = nums
@@ -87,7 +88,6 @@ class Magic_squares:
 
         return [square, initial_pattern]
 
-    #21
     def generateNums(self):
         pattern = [1,6,2,7,3,8,4,9,5]
         new_pattern = [0,0,0,0,0,0,0,0,0]
@@ -102,7 +102,6 @@ class Magic_squares:
 
         return new_pattern
 
-    #22
     def render(self, magic):
         screen = pygame.display.set_mode((595, 595))
         font = pygame.font.Font('freesansbold.ttf', 18)
@@ -125,7 +124,7 @@ class Magic_squares:
         n = [3.5 + (2.55 * i) for i in range(-1, 9)]
         n[0] = 1
 
-        # Render all numers of magic
+        # Render all numbers of magic
         for k in range(9):
             pos = -45
             for i in range(9):
