@@ -19,7 +19,7 @@ while True:
 
         s.render(square)
         pygame.display.update()
-        pygame.time.wait(50000)
+        pygame.time.wait(5000)
         i += 1
     else:
         continue
