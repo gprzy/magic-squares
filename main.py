@@ -1,25 +1,17 @@
-from MagicSquares import Magic_squares
-import pygame, random
-from pygame.locals import *
+import numpy as np
+from msquares import MagicSquare
 
-s = Magic_squares()
-pygame.init()
-pygame.display.set_caption('Magic Squares')
-i = 1
+if __name__ == "__main__":
+    s = MagicSquare()
 
-while True:
-    magic = s.buildPattern([3, 8, 4, 9, 5, 1, 6, 2, 7])
-    new_pattern = s.generateNums()
-    square = s.Random_square(new_pattern)[0]
+    magic = s.build_pattern([3, 8, 4, 9, 5, 1, 6, 2, 7])
+    new_pattern = s.generate_nums()
+    square = s.random_square(new_pattern)[0]
 
-    if s.validar(s.comparador(square))[0] and s.validar(s.comparador(square))[1] and s.validar(s.comparador(square))[2]:
-        print(f"Quadrado: {i}")
-        print(f"Padrão: {square[1]}")
+    if s.validar(s.comparador(square))[0] and \
+       s.validar(s.comparador(square))[1] and \
+       s.validar(s.comparador(square))[2]:
+
+        print(f"Padrão: {square[1]}\n")
+        print(f'{np.array(square)}\n')
         print(f"Número mágico: {sum(new_pattern)}\n")
-
-        s.render(square)
-        pygame.display.update()
-        pygame.time.wait(5000)
-        i += 1
-    else:
-        continue

@@ -1,21 +1,50 @@
 # Magic Squares
-An algorithm that generate symmetric and random magic squares using Python lambda.
+An algorithm that generate symmetric and random magic squares.
 
-### This repository contains
-- The implementation of the **algorithm** with python lambda and interface with pygame
-- The **main program**, that can be runned on pycharm with the installation of pygame
-- A detailed **article** that explains the functionality of the algorithm and the process of built a symmetrical square.
+## Whats is a Magic Square?
+A magic square is a special square that is completely **symmetrical**. The sum of any column generates a **constant number**, that is simultaneously the sum of any line or diagonal of this square.
 
-### Whats is a magic square?
-*A magic square is a square that is completely **symmetrical**. The sum of any column generates a **constant number**, that is simultaneously the sum of any line or diagonal of this square.*
+## Generating a square
+1. Open terminal and run:
+    ```
+    pip install requirements.txt
+    ```
+2. Finally, run:
+    ```powershell
+    python main.py
+    ```
 
-![Square_old](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/square_old.jpg)
+    Example of output
+    ``` 
+    Padrão: [300, 100, 350, 150, 400, 200, 450, 250, 50]
 
-### Why?
-*Magic square* is a very old mathematical concept, and also a topic of *Number Theory*. For mathematical and computational purposes is an interesting challenge, given the complexity of a symmectrical matriz and the conditions to built a magic square.
+    [[ 50 300 100 350 150 400 200 450 250]
+    [300 100 350 150 400 200 450 250  50]
+    [100 350 150 400 200 450 250  50 300]
+    [350 150 400 200 450 250  50 300 100]
+    [150 400 200 450 250  50 300 100 350]
+    [400 200 450 250  50 300 100 350 150]
+    [200 450 250  50 300 100 350 150 400]
+    [450 250  50 300 100 350 150 400 200]
+    [250  50 300 100 350 150 400 200 450]]
 
-### Squares generated
-Constant number and patterns:
-![Square2](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/square2.jpg)<p>
-Patterns:
-![Squares](https://github.com/GabrielPrzy/Magic-Squares/blob/master/imagens/squares.jpg)
+    Número mágico: 2250
+    ```
+
+## Base square
+Every Magic Square of this module is generated based on a common primitive square, shown below:
+```
+Padrão: [3, 8, 4, 9, 5, 1, 6, 2, 7]
+
+[[1 6 2 7 3 8 4 9 5] 
+ [6 2 7 3 8 4 9 5 1] 
+ [2 7 3 8 4 9 5 1 6] 
+ [7 3 8 4 9 5 1 6 2] 
+ [3 8 4 9 5 1 6 2 7] 
+ [8 4 9 5 1 6 2 7 3] 
+ [4 9 5 1 6 2 7 3 8] 
+ [9 5 1 6 2 7 3 8 4] 
+ [5 1 6 2 7 3 8 4 9]]
+
+Número mágico: 45
+```
