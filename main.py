@@ -1,5 +1,5 @@
 import numpy as np
-from msquares import MagicSquare
+from src.magic_squares import MagicSquare
 
 if __name__ == "__main__":
     s = MagicSquare()
@@ -12,6 +12,6 @@ if __name__ == "__main__":
        s.validar(s.comparador(square))[1] and \
        s.validar(s.comparador(square))[2]:
 
-        print(f"Padrão: {square[1]}\n")
+        print(f"Pattern: {square[1]}\n")
         print(f'{np.array(square)}\n')
-        print(f"Número mágico: {sum(new_pattern)}\n")
+        print(f"Magic number: {sum(new_pattern)}\n")
