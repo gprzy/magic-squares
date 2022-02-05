@@ -1,10 +1,12 @@
 # Magic Squares
 
-# What is a magic square?
+## What is a magic square?
+
+<img src="https://github.com/gprzy/magic-squares/blob/master/assets/magic-square.png" width="35%" height="35%"/>
 
 Is a special type of numeric square, being completely **symmetrical**. The sum of any column generates a **constant number**, that is simultaneously the sum of any line or diagonal of the square.
 
-# Running with docker container
+## 🚀 Running with docker container
 
 1\) Building python docker image:
 
@@ -26,17 +28,17 @@ docker exec -it python-env bin/bash
 
 3.2\) In case of errors with the above command, use:
 
-```bash
+```powershell
 docker exec -it python-env sh
 ```
 
 4\) Run the code:
 
-```powershell
+```bash
 python3 main.py
 ```
 
-# Example of output
+## Example of output
 
 ```prolog
 Pattern: [300, 100, 350, 150, 400, 200, 450, 250, 50]
@@ -54,7 +56,7 @@ Pattern: [300, 100, 350, 150, 400, 200, 450, 250, 50]
 Magic number: 2250
 ```
 
-# Base square
+## Base square
 Every magic square is generated based on a common primitive square, shown below:
 
 ```haskell
