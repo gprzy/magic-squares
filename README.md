@@ -2,7 +2,7 @@
 
 ## What is a magic square?
 
-<img src="https://github.com/gprzy/magic-squares/blob/master/assets/magic-square.png" width="35%" height="35%"/>
+<img src="https://github.com/gprzy/magic-squares/blob/master/assets/magic-square.jpg" width="25%" height="25%"/>
 
 Is a special type of numeric square, being completely **symmetrical**. The sum of any column generates a **constant number**, that is simultaneously the sum of any line or diagonal of the square.
 
