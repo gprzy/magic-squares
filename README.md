@@ -1,5 +1,7 @@
 # Magic Squares
 
+[![GitHub license](https://img.shields.io/github/license/microsoft/ML-For-Beginners.svg)](https://github.com/gprzy/magic-squares/blob/master/LICENSE)
+
 ## What is a magic square?
 
 <img src="https://github.com/gprzy/magic-squares/blob/master/assets/magic-square.jpg" width="30%" height="30%"/>
